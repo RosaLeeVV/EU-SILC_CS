@@ -32,8 +32,8 @@ replace ml_dur2 = 8 	if country == "AT" & year == 2016 & gender == 1 & ml_eli ==
 
 * BENEFIT (monthly)
 /*	-> 100% earnings, no ceiling
-	-> marginally employed, self-insured: €9.12/day (not coded) 
-	-> self-employed: €53.96/day	(not coded; LP&R 2016)		
+	-> marginally employed, self-insured: €8.91/day (not coded) 
+	-> self-employed: €52.96/day	(not coded; LP&R 2016)		
 	-> unemployed: 180% of unemployment benefits (not coded)
 */
 	
