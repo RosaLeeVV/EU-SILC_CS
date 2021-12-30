@@ -13,26 +13,23 @@ replace pt_eli = 1 		if country == "ES" & year == 2016 & gender == 2 ///
 replace pt_eli = 0 		if pt_eli == . & country == "ES" & year == 2016 & gender == 2
 
 
-* DURATION (weeks)
-/*	-> employed only: 2 days (birth leave) + 4 weeks (paternity leave)
-	-> self-employed: 4 weeks
+* DURATION 
+/*	-> 15 calendar days: 2 to be taken before childbirth and 13 days to be taken after childbirth 
+	
 */
-replace pt_dur = (2/5) + 4 		if country == "ES" & year == 2016 & pt_eli == 1 ///
+replace pt_dur = (15/5)  		if country == "ES" & year == 2016 & pt_eli == 1 ///
 								& econ_status == 1
-
-replace pt_dur = 4 				if country == "ES" & year == 2016 & pt_eli == 1 ///
-								& econ_status == 2
 
 
 * BENEFIT (monthly)
 /*	-> 100%
-	-> ceiling: €3,803.70/month
+	-> ceiling: €3,642.00/month
 */
 
 replace pt_ben1 = earning 	if country == "ES" & year == 2016 & pt_eli == 1
 
-replace pt_ben1 = 3803 		if country == "ES" & year == 2016 & pt_eli == 1 ///
-							& pt_ben1 > 3803.7
+replace pt_ben1 = 3642 		if country == "ES" & year == 2016 & pt_eli == 1 ///
+							& pt_ben1 > 3642
 
 replace pt_ben2 = pt_ben1 	if country == "ES" & year == 2016 & pt_eli == 1
 
