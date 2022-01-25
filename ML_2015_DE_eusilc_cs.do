@@ -5,7 +5,6 @@
 
 * ELIGIBILITY
 /*	-> employed
-	-> self-employed if voluntarily insured (not coded)
 	-> unemployed 
 	-> the leave is not transferable to father => 
 		it is assumed that single fathers are not entitled to this portion of leave
@@ -30,7 +29,6 @@ replace ml_dur2 = 8 		if country == "DE" & year == 2015 & ml_eli == 1
 
 * BENEFIT (monthly)
 /*	-> 100% earnings, no ceiling (LP&R 2015)
-	-> use net earnings (coded with gross earnings!)
 	-> unemployed: 100% unemployment benefits (not coded) 
 */
 	
