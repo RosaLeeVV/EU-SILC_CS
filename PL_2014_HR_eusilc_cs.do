@@ -11,15 +11,7 @@
 		-> working for 12 consecutive months or 18 months (coded in pl_dur) with interruption during past 2 years (not coded)
 	-> self-employed: parental leave
 		-> working for 12 consecutive months or 18 months (coded in pl_dur) with interruption during past 2 years (not coded)
-	-> unemployed: parental exeption from work
-		-> permanent resident for at least 3 years (not coded)
-		-> compulsory health insurance (not coded)
-		-> registered as unemployed for at least 9 uninterrupted months or 12 months with interruptions
-			in the last 2 years before childbirth (not coded because the benefits are identical as for inactive;
-			it is assumed that unemployed ineligible for the parental exeption from work will be eligible for 
-			parental care for a child)
-	-> inactive: parental care for a child
-		-> permanent resident for at least 5 years (not coded)
+		
 */
 
 replace pl_eli = 1 		if country == "HR" & year == 2014
@@ -43,18 +35,18 @@ replace pl_dur = 6 		if country == "HR" & year == 2014 & pl_eli == 1 ///
 
 * BENEFIT (monthly)
 /*	-> Employed & self-employd: 100%
-		-> ceiling = €565/month
-	-> All others: €225.22/month
+		-> ceiling = €562/month
+	-> All others: €315/month
 */
 
 replace pl_ben1 = earning 		if country == "HR" & year == 2014 & pl_eli == 1 ///
 								& inlist(econ_status,1,2) & (duremp+dursemp) >= 12
 
-replace pl_ben1 = 565 	if country == "HR" & year == 2014 & pl_eli == 1 ///
-						& inlist(econ_status,1,2) & (duremp+dursemp) >= 12 & earning > 565
+replace pl_ben1 = 562 	if country == "HR" & year == 2014 & pl_eli == 1 ///
+						& inlist(econ_status,1,2) & (duremp+dursemp) >= 12 & earning > 562
 
 
-replace pl_ben1 = 225.22 	if country == "HR" & year == 2014 & pl_eli == 1 ///
+replace pl_ben1 = 315 	if country == "HR" & year == 2014 & pl_eli == 1 ///
 						& pl_ben1 == . 
  
 
