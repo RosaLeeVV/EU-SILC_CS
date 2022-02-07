@@ -21,10 +21,10 @@ replace pl_dur = 4 * 4.3 	if country == "BE" & year == 2013 & pl_eli == 1
 
 
 * BENEFIT (monthly)
-/*	-> full-time workers: €771.33/month 
+/*	-> full-time workers: €707.08/month 
 */
 
-replace pl_ben1 = 771.33 		if country == "BE" & year == 2013 & pl_eli == 1 ///
+replace pl_ben1 = 707.08 		if country == "BE" & year == 2013 & pl_eli == 1 ///
 								& pl_ben1 == . 
 			
 
