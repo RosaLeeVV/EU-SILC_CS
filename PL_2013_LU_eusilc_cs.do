@@ -19,10 +19,7 @@ replace pl_eli =  0			if pl_eli == . & country == "LU" & year == 2013
 
 
 * DURATION (weeks)
-/*	-> parents can choose between 4 and 6 months of FT leave
-		- the duration does not affect the monthly benefits => 6 months coded 
-		- the duration does not affect the monthly benefits => 6 months coded 
-	
+/*	-> 6 months per parent. Leave is an individual entitlement
 	-> first parental leave must be taken immediately after maternity leave (not coded)
 	-> second parental leave can be taken anytime until child is 6 years old (not coded)
 	
@@ -31,7 +28,7 @@ replace pl_dur = 6*4.3 		if country == "LU" & year == 2013 & pl_eli == 1
 
 
 * BENEFIT (monthly)
-/*	flat-rate: €1,788/month  	*/
+/*	flat-rate: €1,778/month  	*/
 		
 replace pl_ben1 = 1778 		if country == "LU" & year == 2013 & pl_eli == 1
 replace pl_ben2 = pl_ben1		if country == "LU" & year == 2013 & pl_eli == 1
