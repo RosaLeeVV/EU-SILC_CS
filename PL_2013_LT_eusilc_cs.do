@@ -17,6 +17,10 @@ replace pl_eli =  0			if pl_eli == . & country == "LT" & year == 2013
 
 * DURATION (weeks)
 /*	-> parents can choose the duration of leave => affects benefits
+	-> until child is 3 years old
+		-> choose 1 year = 100% earning
+		-> choose 2 years = 70% earning
+		-> 3rd year unpaid
 	-> more generous option coded (until child is 1)		*/
 
 * women	
@@ -34,11 +38,10 @@ replace pl_dur = 52-pt_dur 			if country == "LT" & year == 2013 & pl_eli == 1 //
 * BENEFIT (monthly)
 /* 	-> choice of leave until child is 1: 100%
 		-> ceiling: €1,379/month (coded)
-	-> choice of leave until child is 2: not coded
-		- 70% earnings until child is 1, ceiling: €965,30/month
-		- 40% of earnings for the rest of the leave, ceiling: €551,6/month */
+	-> choice of leave until child is 2: 70%
+		-> ceiling: €965.30/month 
 		
-replace pl_ben1 = earning 		if country == "LT" & year == 2013 & pl_eli == 1
+replace pl_ben1 = 0.7*earning 		if country == "LT" & year == 2013 & pl_eli == 1
 								
 replace pl_ben1 = 1379	 		if country == "LT" & year == 2013 & pl_eli == 1 ///
 								& pl_ben1 >= 1379
