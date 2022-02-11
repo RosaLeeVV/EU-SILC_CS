@@ -13,15 +13,15 @@ replace pt_eli = 0 		if pt_eli == . & country == "IT" & year == 2013 & gender ==
 
 
 * DURATION (weeks)
-/*	-> 4 days */
+/*	-> 3 days */
 
-replace pt_dur = 4/5 	if country == "IT" & year == 2013 & pt_eli == 1
+replace pt_dur = 3/5 	if country == "IT" & year == 2013 & pt_eli == 1
 
 
 * BENEFIT (monthly)
-/*	-> 100% earning */
-replace pt_ben1 = earning 	if country == "IT" & year == 2013 & pt_eli == 1
-replace pt_ben2 = earning 	if country == "IT" & year == 2013 & pt_eli == 1
+/*	-> 80% earning */
+replace pt_ben1 = 0.8*earning 	if country == "IT" & year == 2013 & pt_eli == 1
+replace pt_ben2 = 0.8*earning 	if country == "IT" & year == 2013 & pt_eli == 1
 
 
 foreach x in 1 2 {
