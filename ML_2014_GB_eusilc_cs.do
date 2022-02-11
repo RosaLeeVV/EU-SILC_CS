@@ -5,15 +5,15 @@
 
 * ELIGIBILITY
 /*	-> employed (statutory maternity pay), self-employed (maternity allowance): 
-		- for 26 weeks before childbirth 
-		- earning at least €37/week
+		- for 26 weeks into the 15th week before due date
+		- earning at least €37/week (maternity alllowance; statutory maternity pay has condition of €139/week)
 	-> further restrictions for entitlement to cash benefits
 	
 	-> part of ML can be shared with the father (shared parental leave) if:
 		- mother: 
 			- employed by the same employer for at least 26 weeks 
 		- father/partner:
-			- employed or self-employed for at least 26 weeks
+			- employed or self-employed for at least 26 weeks into the 15th week before due date
 			- earned at least €139 (coded) in total during 15 weeks (not coded) before the birth
 	-> single fathers are not entitled to shared parental leave because it is 
 	   dependent on the mother's economic status
