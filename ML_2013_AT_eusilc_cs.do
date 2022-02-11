@@ -12,7 +12,7 @@
 */
    
 replace ml_eli = 1 		if country == "AT" & year == 2013 & gender == 1 ///
-						& econ_status == 1 & earning >= 415.72
+						& econ_status == 1 
 replace ml_eli = 1 		if country == "AT" & year == 2013 & gender == 1 ///
 						& econ_status == 3 & duremp >= 3
 				
