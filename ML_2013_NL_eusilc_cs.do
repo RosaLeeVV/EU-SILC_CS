@@ -27,13 +27,13 @@ replace ml_dur2 = 16-4 	if country == "NL" & year == 2013 & gender == 1 & ml_eli
 
 * BENEFIT (monthly)
 /*	-> employed: 100% of daily wage
-	-> ceiling: €203.85/day 		
+	-> ceiling: €195.96/day 		
 	(MISSOC 01/07/2013)		*/
 
 replace ml_ben1 = earning 		if country == "NL" & year == 2013 & gender == 1 /// 
 								& ml_eli == 1 & econ_status == 1 
-replace ml_ben1 = 203.85 * 21.7 	if country == "NL" & year == 2013 & gender == 1 ///
-									& ml_eli == 1 & econ_status == 1 & ml_ben1 > 203.85 * 21.7
+replace ml_ben1 = 195.96 * 21.7 	if country == "NL" & year == 2013 & gender == 1 ///
+									& ml_eli == 1 & econ_status == 1 & ml_ben1 > 195.96 * 21.7
 
 /*	-> self-employed: 100% of the net trading income
 	-> ceiling: € 1,537.20 (source: Eurostat (2021) Monthly minimum wages - bi-annual data, 2013-S2)	
