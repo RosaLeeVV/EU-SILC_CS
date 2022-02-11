@@ -3,6 +3,7 @@
 * AUSTRIA - 2013
 
 * ELIGIBILITY
+/* -> Employed: earnings at least €415.72/month  
    -> Self-employed: if voluntarily insured => not coded.
    -> Unemployed: if receive unemployment benefits/completed 3 months of 
 	continuous  employment		
@@ -30,8 +31,8 @@ replace ml_dur2 = 8 	if country == "AT" & year == 2013 & gender == 1 & ml_eli ==
 
 * BENEFIT (monthly)
 /*	-> 100% earnings, no ceiling
-	-> marginally employed, self-insured: €8.45/day (not coded) 
-	-> self-employed: €50/day	(not coded; LP&R 2013)		
+	-> marginally employed, self-insured: €8.91/day (not coded) 
+	-> self-employed: €52.96/day	(not coded; LP&R 2013)		
 	-> unemployed: 180% of unemployment benefits (not coded)
 */
 	
