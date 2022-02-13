@@ -46,13 +46,13 @@ replace ml_dur2 = 31		if country == "SK" & year == 2013 & ml_eli == 1 ///
 
 
 * BENEFIT (monthly)
-/*	-> 70% average earnings
+/*	-> 65% average earnings
 	-> ceiling: monthly ceiling 1.5-times of national average monthly wage (€889).
 	
 	source: Statistical Office of the Slovak Republic, Average monthly wage of employee 
 		in economy of the SR in the 3rd quarter of 2013, shorturl.at/stvAT , accessed 30.12.2021 */
 	
-replace ml_ben1 = 0.70*earning 		if country == "SK" & year == 2013 & ml_eli == 1
+replace ml_ben1 = 0.65*earning 		if country == "SK" & year == 2013 & ml_eli == 1
 replace ml_ben1 = 1.5*889		if country == "SK" & year == 2013 & ml_eli == 1 ///
 									& ml_ben1 >= (1.5*889)
 
