@@ -28,14 +28,14 @@ replace pl_dur = 365/7 		if country == "SI" & year == 2013 & pl_eli == 1 ///
 * BENEFIT (monthly)
 /*	-> employed, self-employed: 90% earning
 	-> ceiling: €2,863/month (LP&R 2013)
-	-> minimum: €790.73/month 
+	-> minimum: €323.55/month 
 	-> all other residents: €252.04/month 	*/
 
 replace pl_ben1 = 0.9*earning 		if country == "SI" & year == 2013 & pl_eli == 1 ///
 									& inlist(econ_status,1,2)
 
-replace pl_ben1 = 790.73 			if country == "SI" & year == 2013 & pl_eli == 1 ///
-									& inlist(econ_status,1,2) & pl_ben1 < 790.73
+replace pl_ben1 = 323.55 			if country == "SI" & year == 2013 & pl_eli == 1 ///
+									& inlist(econ_status,1,2) & pl_ben1 < 323.55
 									
 replace pl_ben1 = 2863	 			if country == "SI" & year == 2013 & pl_eli == 1 ///
 									& inlist(econ_status,1,2) & pl_ben1 >= 2863
