@@ -19,21 +19,21 @@ replace pt_eli = 1 			if country == "SI" & year == 2013 & gender == 2 ///
 	
 
 * DURATION (weeks)
-/*	-> 70 calendar days in total
+/*	-> 90 calendar days in total
 */
 
-replace pt_dur = 70/7 	if country == "SI" & year == 2013 & pt_eli == 1
+replace pt_dur = 90/7 	if country == "SI" & year == 2013 & pt_eli == 1
 
 
 * BENEFIT (monthly)
-/*	-> 90% earnings for 20 days
-	-> 50 days unpaid
+/*	-> 90% earnings for 15 days
+	-> 75 days unpaid
 	-> ceiling: €2,863/month (LP&R 2013) 	
-	-> minimum: €790.73/month (LP&R 2013)		*/
+	-> minimum: €323.55/month (LP&R 2013)		*/
 
-replace pt_ben1 = (0.9*earning) * (20/70) 	 if country == "SI" & year == 2013 & pt_eli == 1 
-replace pt_ben1 = 790.73	 	 	if country == "SI" & year == 2013 & pt_eli == 1 ///
-									& (0.9*earning) < 790.73
+replace pt_ben1 = (0.9*earning) * (15/70) 	 if country == "SI" & year == 2013 & pt_eli == 1 
+replace pt_ben1 = 323.55	 	 	if country == "SI" & year == 2013 & pt_eli == 1 ///
+									& (0.9*earning) < 323.55
 replace pt_ben1 = 2863		 	 	if country == "SI" & year == 2013 & pt_eli == 1 ///
 									& (0.9*earning) > 2863
 
