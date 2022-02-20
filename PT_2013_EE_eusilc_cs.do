@@ -19,7 +19,7 @@ replace pt_dur = 10/5 	if country == "EE" & year == 2013 & pt_eli == 1
 * BENEFIT (monthly)
 /*	-> 100% of earning
 	-> ceiling: 3x the average gross monthly salary (MISSOC 2013)
-	-> average gross monthly salary, 2013: €1,310 (Source: Statistics Estonia, 
+	-> average gross monthly salary, 2013: €949 (Source: Statistics Estonia, 
 
 	https://www.stat.ee/en/find-statistics/statistics-theme/work-life/wages-and-salaries-and-labour-costs/average-monthly-gross-wages-and-salaries
 	accessed 24/03/2021		*/
@@ -27,9 +27,9 @@ replace pt_dur = 10/5 	if country == "EE" & year == 2013 & pt_eli == 1
 replace pt_ben1 = earning 	if country == "EE" & year == 2013 & pt_eli == 1
 							
 							
-replace pt_ben1 = ((3*1310) * (pt_dur/4.3)) + (earning * ((4.3-pt_dur)/4.3)) ///
+replace pt_ben1 = ((3*949) * (pt_dur/4.3)) + (earning * ((4.3-pt_dur)/4.3)) ///
 							if country == "EE" & year == 2013 & pt_eli == 1 ///
-							& pt_ben1 >= 3*1310
+							& pt_ben1 >= 3*949
 
 replace pt_ben2 = pt_ben1 	if country == "EE" & year == 2013 & pt_eli == 1
 
