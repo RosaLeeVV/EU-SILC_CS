@@ -25,20 +25,20 @@ replace ml_dur2 = (140-30)/7 		if country == "EE" & year == 2013 & gender == 1 &
 
 * BENEFIT (monthly)
 /*	-> employed, self-employed: 100% earnings paid during the previous calendar year (LP&R 2013)
-	-> employed, self-employed who didn't work in the previous calendar year: €390/month 	
+	-> employed, self-employed who didn't work in the previous calendar year: €320/month 	
 */
 
 * employed	
 replace ml_ben1 = earning 		if country == "EE" & year == 2013 & ml_eli == 1 ///
 								& duremp >= 1 
-replace ml_ben1 = 390			if country == "EE" & year == 2013 & ml_eli == 1 ///
+replace ml_ben1 = 320			if country == "EE" & year == 2013 & ml_eli == 1 ///
 								& duremp == 0
 
 								
 * self-employed								
 replace ml_ben1 = earning 		if country == "EE" & year == 2013 & ml_eli == 1 ///
 								& dursemp >= 1 
-replace ml_ben1 = 390			if country == "EE" & year == 2013 & ml_eli == 1 ///
+replace ml_ben1 = 320			if country == "EE" & year == 2013 & ml_eli == 1 ///
 								& dursemp == 0
 
 
