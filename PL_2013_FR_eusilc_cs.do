@@ -47,11 +47,11 @@ replace pl_dur = 2*52	 				if country == "FR" & year == 2013 ///
 								
 
 * BENEFIT (monthly)
-/*	-> €391/month for full-time leave
+/*	-> €575.68/month for full-time leave
 	
 */
 
-replace pl_ben1 = 391 		if country == "FR" & year == 2013 & pl_eli == 1
+replace pl_ben1 = 575.68 		if country == "FR" & year == 2013 & pl_eli == 1
 replace pl_ben2 = pl_ben1 		if country == "FR" & year == 2013 & pl_eli == 1
 
 
