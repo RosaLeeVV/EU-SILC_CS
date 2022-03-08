@@ -36,7 +36,7 @@ replace pl_dur = 32 		if country == "DK" & year == 2012 & pl_eli == 1 & gender =
 
 * BENEFIT (monthly)
 /* 	-> employed, self-employed: 100% earning
-	-> ceiling: €561/week 	
+	-> ceiling: €530/week 	
 	-> unemployed: unemployment benefits (not coded)
 	-> students: extra 12 months of study grant (not coded) 
 	-> the entitlement to benefit is a family entitlement => assigned to women 
@@ -46,16 +46,16 @@ replace pl_dur = 32 		if country == "DK" & year == 2012 & pl_eli == 1 & gender =
 replace pl_ben1 = earning 		if country == "DK" & year == 2012 & pl_eli == 1 ///
 								& inlist(econ_status,1,2) & gender == 1
 
-replace pl_ben1 = 561*4.3		if country == "DK" & year == 2012 & pl_eli == 1 ///
-								& inlist(econ_status,1,2) & earning/4.3 >= 561 ///
+replace pl_ben1 = 530*4.3		if country == "DK" & year == 2012 & pl_eli == 1 ///
+								& inlist(econ_status,1,2) & earning/4.3 >= 530 ///
 								& gender == 1
 
 * single men
 replace pl_ben1 = earning 		if country == "DK" & year == 2012 & pl_eli == 1 ///
 								& inlist(econ_status,1,2) & gender == 2 & parstat == 1
 
-replace pl_ben1 = 561*4.3		if country == "DK" & year == 2012 & pl_eli == 1 ///
-								& inlist(econ_status,1,2) & earning/4.3 >= 561 ///
+replace pl_ben1 = 530*4.3		if country == "DK" & year == 2012 & pl_eli == 1 ///
+								& inlist(econ_status,1,2) & earning/4.3 >= 530 ///
 								& gender == 2 & parstat == 1
 
 
