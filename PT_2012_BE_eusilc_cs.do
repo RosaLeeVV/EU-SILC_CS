@@ -19,7 +19,7 @@ replace pt_dur = 10/5 	if country == "BE" & year == 2012 & gender == 2 ///
 
 * BENEFIT (monthly)
 /*	-> 82% of earnings
-	-> ceiling = €111.45/day 		*/
+	-> ceiling = €103.72/day 		*/
 	
 
 
@@ -28,10 +28,10 @@ replace pt_ben1 = ((earning*0.82) * (10/21.7))	+ (earning * ((21.7-10)/21.7)) //
 									& gender == 2  & pt_eli == 1					
 
 * above ceiling
-replace pt_ben1 = (111.45*10) + (earning * ((21.7-10)/21.7)) ///
+replace pt_ben1 = (103.72*10) + (earning * ((21.7-10)/21.7)) ///
 									if country == "BE" & year == 2012 ///
 									& gender == 2  & pt_eli == 1 ///
-									& ((0.82*earning)/21.7) > 111.45
+									& ((0.82*earning)/21.7) > 103.72
 									
 
 replace pt_ben2 = pt_ben1 			if country == "BE" & year == 2012 & gender == 2
