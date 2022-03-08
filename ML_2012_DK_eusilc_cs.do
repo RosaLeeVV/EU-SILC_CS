@@ -33,15 +33,15 @@ replace ml_dur2 = 12 	if country == "DK" & year == 2012 & ml_eli == 1
 
 * BENEFIT (monthly)
 /* 	-> employed, self-employed: 100% earning
-	-> ceiling: €562/week 	
+	-> ceiling: €530/week 	
 	-> unemployed: unemployment benefits (not coded; LP&R 2012)
 	-> students: extra 12 months of study grant (not coded; LP&R 2012) */
 	
 replace ml_ben1 = earning 		if country == "DK" & year == 2012 & ml_eli == 1 ///
-								& inlist(econ_status,1,2) & earning < 562*4.3
+								& inlist(econ_status,1,2) & earning < 530*4.3
 
-replace ml_ben1 = 562*4.3		if country == "DK" & year == 2012 & ml_eli == 1 ///
-								& inlist(econ_status,1,2) & ml_ben1 >= 562*4.3
+replace ml_ben1 = 530*4.3		if country == "DK" & year == 2012 & ml_eli == 1 ///
+								& inlist(econ_status,1,2) & ml_ben1 >= 530*4.3
 								
 
 replace ml_ben2 = ml_ben1 if country == "DK" & year == 2012 & ml_eli == 1
