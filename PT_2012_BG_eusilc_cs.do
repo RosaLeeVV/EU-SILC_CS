@@ -22,9 +22,7 @@ replace pt_dur = 15/5 if country == "BG" & year == 2012 & pt_eli == 1
 
 * BENEFIT (monthly)
 /*	-> 90% earning 
-	-> minimum: €235.16 for the duration of PT 
-	-> ceiling: €1,329.18 for the duration of PT
-	The minimum and maximum values of benefit are sourced from LP&R 2012. 
+
 */
 
 	
@@ -32,14 +30,6 @@ replace pt_ben1 = ((earning * 0.9) * (15/21.7)) + (earning * ((21.7-15)/21.7)) /
 										if country == "BG" & year == 2012 ///
 										& pt_eli == 1 & pt_ben1 == .
 	
-	
-* minimum
-replace pt_ben1 = 235.16 + (earning * ((21.7-15)/21.7)) 	if country == "BG" & year == 2012 ///
-															& pt_eli == 1 & ((earning * 0.9) * (15/21.7)) < 235.16
- 
-* maximum 
-replace pt_ben1 = 1329.18 + (earning * ((21.7-15)/21.7)) 	if country == "BG" & year == 2012 ///
-															& pt_eli == 1 & ((earning * 0.9) * (15/21.7)) >= 1329.18
 										
 
 									
