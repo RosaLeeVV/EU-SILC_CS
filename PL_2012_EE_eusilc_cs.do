@@ -37,9 +37,9 @@ replace pl_dur = 18 * 4.3 		if country == "EE" & year == 2012 ///
 
 * BENEFIT (monthly)
 /*	-> 100% earnings
-	-> minimum: €430/month
-	-> maximum: €2,724.36/month		
-	-> unemployed and inactive parent: €390
+	-> minimum: €278/month
+	-> maximum: €2,143.41/month		
+	-> unemployed and inactive parent: €278
 */
 
 replace pl_ben1 = earning 	if country == "EE" & year == 2012 & pl_eli == 1 ///
@@ -48,17 +48,17 @@ replace pl_ben1 = earning 	if country == "EE" & year == 2012 & pl_eli == 1 ///
 replace pl_ben1 = earning 	if country == "EE" & year == 2012 & pl_eli == 1 ///
 							& gender == 2 & parstat == 1
 								
-replace pl_ben1 = 430		if country == "EE" & year == 2012 & pl_eli == 1 ///
-							& pl_ben1 < 430 & pl_ben1 != . & pl_ben1 != .
+replace pl_ben1 = 278		if country == "EE" & year == 2012 & pl_eli == 1 ///
+							& pl_ben1 < 278 & pl_ben1 != . & pl_ben1 != .
 							
-replace pl_ben1 = 2724.36	if country == "EE" & year == 2012 & pl_eli == 1 ///
-							& pl_ben1 >= 2724.36 & pl_ben1 != . 
+replace pl_ben1 = 2143.41	if country == "EE" & year == 2012 & pl_eli == 1 ///
+							& pl_ben1 >= 2143.41 & pl_ben1 != . 
 							
 							
-replace pl_ben1 = 390 		if country == "EE" & year == 2012 & pl_eli == 1 ///
+replace pl_ben1 = 278 		if country == "EE" & year == 2012 & pl_eli == 1 ///
 							& inlist(econ_status,3,4) & gender == 1
 
-replace pl_ben1 = 390 		if country == "EE" & year == 2012 & pl_eli == 1 ///
+replace pl_ben1 = 278 		if country == "EE" & year == 2012 & pl_eli == 1 ///
 							& inlist(econ_status,3,4) & gender == 2 & parstat == 1							
 
 replace pl_ben2 = pl_ben1 		if country == "EE" & year == 2012 & pl_eli == 1 
