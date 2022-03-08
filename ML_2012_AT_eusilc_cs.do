@@ -3,7 +3,7 @@
 * AUSTRIA - 2012
 
 * ELIGIBILITY
-/* -> Employed: earnings at least €415.72/month  
+/* -> Employed: earnings at least €376.26/month  
    -> Self-employed: if voluntarily insured => not coded.
    -> Unemployed: if receive unemployment benefits/completed 3 months of 
 	continuous  employment		
@@ -12,7 +12,7 @@
 */
    
 replace ml_eli = 1 		if country == "AT" & year == 2012 & gender == 1 ///
-						& econ_status == 1 & earning >= 415.72
+						& econ_status == 1 & earning >= 376.26
 replace ml_eli = 1 		if country == "AT" & year == 2012 & gender == 1 ///
 						& econ_status == 3 & duremp >= 3
 				
@@ -31,8 +31,8 @@ replace ml_dur2 = 8 	if country == "AT" & year == 2012 & gender == 1 & ml_eli ==
 
 * BENEFIT (monthly)
 /*	-> 100% earnings, no ceiling
-	-> marginally employed, self-insured: €8.91/day (not coded) 
-	-> self-employed: €52.96/day	(not coded; LP&R 2012)		
+	-> marginally employed, self-insured: €8.22/day (not coded) 
+	-> self-employed: €26.97/day	(not coded; LP&R 2012)		
 	-> unemployed: 180% of unemployment benefits (not coded)
 */
 	
