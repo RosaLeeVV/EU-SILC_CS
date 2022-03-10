@@ -59,7 +59,7 @@ replace ml_dur2 = 10 		if country == "ES" & year == 2012 &  ml_eli == 1 ///
 * BENEFIT (monthly)
 /*	-> employed, self-employed who didn't fulfill the contribution requirements: €532.51/month (LP&R 2012)
 	-> employed, self-employed: 100%
-	-> ceiling: €3,642.00/month	
+	-> ceiling: €3,230/month	
 */
 
 replace ml_ben1 = earning 		if country == "ES" & year == 2012 & ml_eli == 1 ///
@@ -73,8 +73,8 @@ replace ml_ben1 = earning 		if country == "ES" & year == 2012 & ml_eli == 1 ///
 								& inlist(econ_status,1,2) & age > 26 ///
 								& (duremp+dursemp) >= 180/21.7
 								
-replace ml_ben1 = 3642.0 		if country == "ES" & year == 2012 & ml_eli == 1 ///
-								& ml_ben1 >= 3642.0
+replace ml_ben1 = 3230 		if country == "ES" & year == 2012 & ml_eli == 1 ///
+								& ml_ben1 >= 3230
 
 replace ml_ben1 = 532.51		if country == "ES" & year == 2012 & ml_eli == 1 ///
 								& ml_ben1 == .
