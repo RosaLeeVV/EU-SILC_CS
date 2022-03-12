@@ -29,23 +29,23 @@ replace ml_dur2 = (105-30)/6 if country == "FI" & year == 2012 & gender == 1 & m
 
 * BENEFIT (monthly; LP&R 2012)
 /* first 56 days:
-	-> €22.96/day if unemployed or earnings are less than €9,842/year (income group 56a)
+	-> €22.13/day if unemployed or earnings are less than €9,842/year (income group 56a)
 	-> 90% of earnings between €9,842/year and €51,510/year (IG 56b)
 	-> 32.5% of earnings above €51,510/year (IG 56c)
 
 remaining 49 days:
-	-> €22.96/day if unemployed or earnings are less than €9,842/year (income group 49a)
+	-> €22.13/day if unemployed or earnings are less than €9,842/year (income group 49a)
 	-> 70% on earnings between €9,842/year and €33,479/year (IG 49b)
 	-> 40% on earnings between €33,480/year and €51,510/year (IG 49c)
 	-> 25% on earnings above €51,510/year   (IG 49d) 						*/ 
 
 * Income group (IG) 56a
-gen ml_ben56 = 22.96 * 21.7 		if country == "FI" & year == 2012 ///
+gen ml_ben56 = 22.13 * 21.7 		if country == "FI" & year == 2012 ///
 									& gender == 1 & ml_eli == 1 ///
 									& econ_status == 3
 
 
-replace ml_ben56 = 22.96 * 21.7 		if country == "FI" & year == 2012 ///
+replace ml_ben56 = 22.13 * 21.7 		if country == "FI" & year == 2012 ///
 									& gender == 1 & ml_eli == 1 ///
 									& (earning*12) < 9842
 
@@ -71,11 +71,11 @@ replace ml_ben56 = ml_ben56a + ml_ben56b 		if country == "FI" & year == 2012 ///
 
 
 * IG 49a
-gen ml_ben49 = 22.96 * 21.7 		if country == "FI" & year == 2012 & gender == 1 ///
+gen ml_ben49 = 22.13 * 21.7 		if country == "FI" & year == 2012 & gender == 1 ///
 									& ml_eli == 1 & econ_status == 3
 
 
-replace ml_ben49 = 22.96 * 21.7 		if country == "FI" & year == 2012 & gender == 1 ///
+replace ml_ben49 = 22.13 * 21.7 		if country == "FI" & year == 2012 & gender == 1 ///
 									& ml_eli == 1 & (earning*12) < €9842
 
 * IG 49b - annual earnings under €33479
