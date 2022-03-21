@@ -5,7 +5,7 @@
 	Shared parental leave is a share of mother's maternity leave
 	that can be transferred to father. This is coded in ML_2012_GB_eusilc_cs.
 	
-	Parental leave is an individual non-transferable right to 18 weeks of 
+	Parental leave is an individual non-transferable right to 13 weeks of 
 	unpaid leave. Each parent can draw maximum of 4 weeks of parental leave 
 	per year (LP&R 2012). Parental leave has a character of an "emergency" leave
 	=> not coded. 
