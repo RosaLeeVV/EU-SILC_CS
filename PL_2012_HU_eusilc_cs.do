@@ -35,8 +35,8 @@ replace pl_dur = (3*52)					if country == "HU" & year == 2012 & pl_eli == 1 ///
 * BENEFIT (monthly)
 /*	-> employed, self-employed compulsorily insured for at least 365 days (coded)
 		in past 2 years (not coded) with the same employer (not coded): 
-		-> for 2 years: 70% earning, ceiling: €700/month (MISSOC 2012; GYED)
-		-> for 1 year: €90/month (GYES)
+		-> for 2 years: 70% earning, ceiling: €456/month (MISSOC 2012; GYED)
+		-> for 1 year: €96/month (GYES)
 		
 	-> female tertiary education students or women who completed at least 2 semesters
 		of tertiary education in past 2 years:
@@ -45,13 +45,11 @@ replace pl_dur = (3*52)					if country == "HU" & year == 2012 & pl_eli == 1 ///
 		-> for 2 years: €90/month
 		-> not coded (EU-SILC doesn't recognise)
 	
-	-> all other parents: €90/month 
-	
 	-> family entitlement: all assigned to women
 */
 
 * GYES
-gen pl_gyes = 90 		if country == "HU" & year == 2012 & pl_eli == 1
+gen pl_gyes = 96 		if country == "HU" & year == 2012 & pl_eli == 1
 replace pl_gyes = . 	if country == "HU" & year == 2012 & pl_eli == 1 ///
 						& parstat == 2 & gender == 2 			// family entitlement => in couples assign all to women
 
@@ -60,19 +58,19 @@ replace pl_gyes = . 	if country == "HU" & year == 2012 & pl_eli == 1 ///
 	* women
 gen pl_gyed = 0.7*earning 		if country == "HU" & year == 2012 & pl_eli == 1 ///
 								& ml_eli == 1 & inlist(econ_status,1,2) ///
-								& earning < 700 & gender == 1
+								& earning < 456 & gender == 1
 							
-replace pl_gyed = 700		 	if country == "HU" & year == 2012 & pl_eli == 1 ///
+replace pl_gyed = 456		 	if country == "HU" & year == 2012 & pl_eli == 1 ///
 								& ml_eli == 1 & inlist(econ_status,1,2) ///
-								& earning >= 700 & gender == 1
+								& earning >= 456 & gender == 1
 								
 	* single men
 replace pl_gyed = 0.7*earning 	if country == "HU" & year == 2012 & pl_eli == 1 ///
-								& inlist(econ_status,1,2) & earning < 700 ///
+								& inlist(econ_status,1,2) & earning < 456 ///
 								& gender == 2 & parstat == 1
 							
-replace pl_gyed = 700		 	if country == "HU" & year == 2012 & pl_eli == 1 ///
-								& inlist(econ_status,1,2) & earning >= 700 ///
+replace pl_gyed = 456		 	if country == "HU" & year == 2012 & pl_eli == 1 ///
+								& inlist(econ_status,1,2) & earning >= 456 ///
 								& gender == 2 & parstat == 1
 
 replace pl_gyed = 0 			if pl_gyed == . & gender == 1 & country == "HU" & year == 2012
