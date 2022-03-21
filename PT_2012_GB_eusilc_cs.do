@@ -6,12 +6,12 @@
 /*	-> employed if:
 		- employed by the same employer (not coded)
 		- for 26 weeks
-		- average weekly earning at least €136
+		- average weekly earning at least €131
 		
 */	
 
 replace pt_eli = 1 		if country == "GB" & year == 2012 & gender == 2 ///
-						& econ_status == 1 & duremp >= 26/4.3 & earning/4.3 >= 136
+						& econ_status == 1 & duremp >= 26/4.3 & earning/4.3 >= 131
 						
 replace pt_eli = 0 		if pt_eli == . & country == "GB" & year == 2012 & gender == 2
 
