@@ -29,13 +29,13 @@ replace pl_dur = 52 		if country == "BG" & year == 2011 & pl_eli == 1 ///
 
 
 * BENEFIT (monthly)
-/*	-> women employed for at least 12 months: €174/month
+/*	-> women employed for at least 12 months: €123/month
 	-> all other women: €51/month
 	Source: MISSOC 01/07/2011*/
    
-replace pl_ben1 = 174	 if country == "BG" & year == 2011 & pl_eli == 1 ///
+replace pl_ben1 =  123	 if country == "BG" & year == 2011 & pl_eli == 1 ///
 						 & gender == 1 & econ_status == 1 & duremp >= 12
-replace pl_ben1 = 51	 if country == "BG" & year == 2011 & pl_eli == 1 ///
+replace pl_ben1 = 77	 if country == "BG" & year == 2011 & pl_eli == 1 ///
 						 & gender == 1 & pl_ben1 == . & pl_eli == 1 
 
 
