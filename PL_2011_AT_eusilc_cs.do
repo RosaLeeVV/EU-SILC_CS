@@ -65,7 +65,6 @@ replace pl_dur = 52 	if country == "AT" & year == 2011 & pl_eli == 1 ///
 	-> employed: 80% of earnings (parent who claims the benefits)
 			- no ceiling
 			- paid for 365 days after childbirth
-	-> all other parents: €33/day (most generous option corresponding with the coded leave duration)
 */
 
 
@@ -73,12 +72,7 @@ replace pl_dur = 52 	if country == "AT" & year == 2011 & pl_eli == 1 ///
 replace pl_ben1 = 0.8 * earning 	if country == "AT" & year == 2011 & pl_eli == 1 /// 
 									& econ_status == 1 & parstat == 1 
 									
-									
-						
- ** not employed & single
-replace pl_ben1 = 33 * 21.7	 	if country == "AT" & year == 2011 & pl_eli == 1 /// 
-									& inrange(econ_status,2,4) & parstat == 1
- 
+								
  
  
  ** cohabiting -> asssigned to a woman
@@ -91,21 +85,13 @@ replace pl_ben1 = 0.8 * earning		if country == "AT" & year == 2011 & pl_eli == 1
 replace pl_ben1 = 0.8 * p_earning	if country == "AT" & year == 2011 & pl_eli == 1 ///
 									& p_econ_status == 1 & earning < p_earning & pl_ben1 == . ///
 									& gender == 1 & parstat == 2 & p_earning != .
-									
-									
-	* neither of the partners is employed										
-replace pl_ben1 = 33 * 21.7 		if country == "AT" & year == 2011 & pl_eli == 1 ///
-									& inrange(econ_status,2,4) & !inlist(p_econ_status,.,1) & pl_ben1 == . ///
-									& gender == 1
+								
 
 									
 	* employed, partner's earning is missing	
 replace pl_ben1 = 0.8 * earning 	if country == "AT" & year == 2011 & pl_eli == 1 /// 
 									& econ_status == 1 & parstat == 2 & p_earning == .
-									
-	* not employed
-replace pl_ben1 = 33 * 21.7	 	if country == "AT" & year == 2011 & pl_eli == 1 /// 
-									& inrange(econ_status,2,4) & parstat == 2 & pl_ben1 == .
+								
 									
 
 
