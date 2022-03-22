@@ -14,17 +14,17 @@ replace pl_eli = 0 		if pl_eli == . & country == "BE" & year == 2011
 
 
 * DURATION (weeks)
-/*	-> 4 months 
+/*	-> 3 months 
 	-> until child is 12 years old (not coded) 		*/
 	
-replace pl_dur = 4 * 4.3 	if country == "BE" & year == 2011 & pl_eli == 1
+replace pl_dur = 3 * 4.3 	if country == "BE" & year == 2011 & pl_eli == 1
 
 
 * BENEFIT (monthly)
-/*	-> full-time workers: €771.33/month 
+/*	-> full-time workers: €684.94/month 
 */
 
-replace pl_ben1 = 771.33 		if country == "BE" & year == 2011 & pl_eli == 1 ///
+replace pl_ben1 = 684.94 		if country == "BE" & year == 2011 & pl_eli == 1 ///
 								& pl_ben1 == . 
 			
 
