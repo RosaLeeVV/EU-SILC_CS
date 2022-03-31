@@ -14,15 +14,11 @@ replace pl_eli = 0 		if pl_eli == . & country == "CZ" & year == 2011
 * DURATION (weeks)
 /*	-> parents choose the monthly benefit amount (determines also the duration of PL) 
 
-	-> maximum amount of benefit for the whole period: €8,114
-   
-	-> 70% of the daily assessment base
-	-> ceiling: €424/month 
     
 	-> The benefit is calculated from the higher daily assessment base (if man's dab is higher, it is calculated
    from his daily assessment base; if woman's dab is higher, it is calculated from hers).
 	-> If neither of the parents have social insurance:
-		- €280/month until child is 10 months old, €140 until child is 48 months old => duration 4 years
+		- €313/month until child is 9 months old, €158 until child is 48 months old => duration 4 years
 		
 	-> the most generous benefit is coded
    
@@ -36,72 +32,72 @@ replace pl_eli = 0 		if pl_eli == . & country == "CZ" & year == 2011
 
 /* daily assessment base (source: MISSOC 2011, IV. Maternity/Paternity):
 	
-	-> up to €33/day = 100% daily earning
-	-> €33 - €50/day = 60% daily earning
-	-> €50/day = 30% daily earning  
-	-> earning over €100/day are not taken into account
+	-> up to €34/day = 100% daily earning
+	-> €34 - €51/day = 60% daily earning
+	-> €51/day = 30% daily earning  
+	-> earning over €102/day are not taken into account
 	
 	NOTE: 	DAB calculated in ML section
 			Here only DAB for partner's variables (p_*)
 */
 
-* daily earning < 33
+* daily earning < 34
 gen p_dab = p_earning/21.7 				if country == "CZ" & year == 2011 ///
-										& (p_earning/21.7) < 33 & parstat == 2 ///
+										& (p_earning/21.7) < 34 & parstat == 2 ///
 										& econ_status != 1 & p_econ_status == 1
 
-* daily earning between €33 and €50
-gen p_dab1 = 33 							if country == "CZ" & year == 2011 ///
-											& inrange(p_earning/21.7,33,50) & parstat == 2 ///
+* daily earning between €34 and €51
+gen p_dab1 = 34 							if country == "CZ" & year == 2011 ///
+											& inrange(p_earning/21.7,34,51) & parstat == 2 ///
 											& econ_status != 1 & p_econ_status == 1
 											
-gen p_dab2 = ((p_earning/21.7) - 33)*0.6 	if country == "CZ" & year == 2011 ///
-											& inrange(p_earning/21.7,33,50) & parstat == 2 ///
+gen p_dab2 = ((p_earning/21.7) - 34)*0.6 	if country == "CZ" & year == 2011 ///
+											& inrange(p_earning/21.7,34,51) & parstat == 2 ///
 											& econ_status != 1 & p_econ_status == 1
 											 
 replace p_dab = p_dab1 + p_dab2 			if country == "CZ" & year == 2011 ///
-											& inrange(p_earning/21.7,33,50) & p_dab == .  ///
+											& inrange(p_earning/21.7,34,51) & p_dab == .  ///
 											& parstat == 2 & econ_status != 1 & p_econ_status == 1
 drop p_dab1 p_dab2
 
 										
-* daily earning between €50 and €100										
-gen p_dab1 = 33 						if country == "CZ" & year == 2011  ///
-										& inrange(p_earning/21.7,50,100) ///
+* daily earning between €51 and €102										
+gen p_dab1 = 34 						if country == "CZ" & year == 2011  ///
+										& inrange(p_earning/21.7,51,102) ///
 										& parstat == 2 & econ_status != 1 & p_econ_status == 1
 										
-gen p_dab2 = (50 - 33)*0.6 				if country == "CZ" & year == 2011 ///
-										& inrange(p_earning/21.7,50,100) ///
+gen p_dab2 = (51 - 34)*0.6 				if country == "CZ" & year == 2011 ///
+										& inrange(p_earning/21.7,51,102) ///
 										& parstat == 2 & econ_status != 1 & p_econ_status == 1
 										
-gen p_dab3 = ((p_earning/21.7) - 50)*0.3 	if country == "CZ" & year == 2011 ///
-											& inrange(p_earning/21.7,50,100) & parstat == 2 ///
+gen p_dab3 = ((p_earning/21.7) - 51)*0.3 	if country == "CZ" & year == 2011 ///
+											& inrange(p_earning/21.7,51,102) & parstat == 2 ///
 											& econ_status != 1 & p_econ_status == 1
 
 										
 replace p_dab = p_dab1 + p_dab2 + p_dab3  		if country == "CZ" & year == 2011 ///
-												& inrange(p_earning/21.7,50,100)  ///
+												& inrange(p_earning/21.7,51,102)  ///
 												& p_dab == . & parstat == 2 & econ_status != 1 ///
 												& p_econ_status == 1
 drop p_dab1 p_dab2 p_dab3 
 
 
-* daily earning over €100
-gen p_dab1 = 33 						if country == "CZ" & year == 2011  ///
-										& p_earning/21.7 > 100 ///
+* daily earning over €102
+gen p_dab1 = 34 						if country == "CZ" & year == 2011  ///
+										& p_earning/21.7 > 102 ///
 										& parstat == 2 & econ_status != 1  & p_econ_status == 1
 										
-gen p_dab2 = (50 - 33)*0.6 				if country == "CZ" & year == 2011 ///
-										& p_earning/21.7 > 100 & parstat == 2 ///
+gen p_dab2 = (51 - 34)*0.6 				if country == "CZ" & year == 2011 ///
+										& p_earning/21.7 > 102 & parstat == 2 ///
 										& econ_status != 1 & p_econ_status == 1
 										
-gen p_dab3 = (100 - 50)*0.3			 	if country == "CZ" & year == 2011 ///
-										& p_earning/21.7 > 100  & parstat == 2 ///
+gen p_dab3 = (102 - 51)*0.3			 	if country == "CZ" & year == 2011 ///
+										& p_earning/21.7 > 102  & parstat == 2 ///
 										& econ_status != 1 & p_econ_status == 1
 
 										
 replace p_dab = p_dab1 + p_dab2 + p_dab3  		if country == "CZ" & year == 2011 ///
-												& p_earning/21.7 > 100   ///
+												& p_earning/21.7 > 102   ///
 												& p_dab == . & parstat == 2 & econ_status != 1 ///
 												& p_econ_status == 1
 drop p_dab1 p_dab2 p_dab3 
@@ -170,7 +166,7 @@ replace pl_dur = (8114/424) * 4.3				 	if country == "CZ" & year == 2011 & pl_el
 
 * SINGLE
 	* not employed
-replace pl_ben1 = (292 * (10/58)) + (140 * (48/58)) 					if country == "CZ" & year == 2011 & pl_eli == 1 ///
+replace pl_ben1 = (292 * (10/58)) + (158 * (48/58)) 					if country == "CZ" & year == 2011 & pl_eli == 1 ///
 										& econ_status != 1 & parstat == 1
 										
 	* employed, below ceiling
@@ -185,7 +181,7 @@ replace pl_ben1 = 424					if country == "CZ" & year == 2011 & pl_eli == 1 ///
 		
 * COUPLE (assigned to women)
 	* neither employed
-replace pl_ben1 = (292 * (10/58)) + (140 * (48/58)) 					if country == "CZ" & year == 2011 & pl_eli == 1 ///
+replace pl_ben1 = (292 * (10/58)) + (158 * (48/58)) 					if country == "CZ" & year == 2011 & pl_eli == 1 ///
 										& econ_status != 1 & !inlist(p_econ_status,.,1) & parstat == 2
 										
 	* woman not employed, man employed
