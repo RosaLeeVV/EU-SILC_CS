@@ -15,28 +15,21 @@ replace pl_eli = 0 	if pl_eli == . & country == "BG" & year == 2011
 
 
 * DURATION (weeks)
-/*	-> employed for at least 12 months: until child is 2 (coded: minus postnatal ML)
-	-> all other women: until child is 1 year old			
+/*	-> until child is 2 (coded: minus postnatal ML)			
 	Source: MISSOC 01/07/2011										
 */
    
 replace pl_dur = (2*52) - ml_dur2 		if country == "BG" & year == 2011 & pl_eli == 1 ///
-										& gender == 1 & econ_status == 1 & duremp >= 12 ///
-										& ml_eli == 1
-replace pl_dur = 52 		if country == "BG" & year == 2011 & pl_eli == 1 ///
-							& gender == 1 & pl_dur == . & pl_eli == 1
-
+										& gender == 1 & ml_eli == 1
 
 
 * BENEFIT (monthly)
-/*	-> women employed for at least 12 months: €123/month
-	-> all other women: €51/month
+/*	-> €123/month
 	Source: MISSOC 01/07/2011*/
    
 replace pl_ben1 =  123	 if country == "BG" & year == 2011 & pl_eli == 1 ///
-						 & gender == 1 & econ_status == 1 & duremp >= 12
-replace pl_ben1 = 77	 if country == "BG" & year == 2011 & pl_eli == 1 ///
-						 & gender == 1 & pl_ben1 == . & pl_eli == 1 
+						 & gender == 1 
+
 
 
 replace pl_ben2 = pl_ben1 	if country == "BG" & year == 2011 & pl_eli == 1 ///
