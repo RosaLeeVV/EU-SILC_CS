@@ -30,6 +30,7 @@ replace pt_ben1 = ((earning * 0.9) * (15/21.7)) + (earning * ((21.7-15)/21.7)) /
 										& pt_eli == 1 & pt_ben1 == .
 	
 
+replace pt_ben2 = pt_ben1 if country == "BG" & year == 2011 & pt_eli == 1
 
 foreach x in 1 2 {
 	replace pt_ben`x' = 0 	if pt_eli == 0 & country == "BG" & year == 2011
