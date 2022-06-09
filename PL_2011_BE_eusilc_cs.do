@@ -4,9 +4,9 @@
 * BELGIUM - 2011
 
 * ELIGIBILITY
-/*	-> private sector: employees, 12 months (coded) of employement in last 15 months with the same employer (not 
+/*	-> employees, 12 months (coded) of employement in last 15 months with the same employer (not 
 		coded)
-	-> public sector: employees (not coded; LP&R 2011)						*/
+*/
    
 replace pl_eli = 1 		if country == "BE" & year == 2011 & pl_eli == . ///
 						& econ_status == 1 & duremp >= 12 
@@ -14,14 +14,15 @@ replace pl_eli = 0 		if pl_eli == . & country == "BE" & year == 2011
 
 
 * DURATION (weeks)
-/*	-> 3 months 
-	-> until child is 12 years old (not coded) 		*/
+/*	-> 3 months/parent/child 
+*/
 	
 replace pl_dur = 3 * 4.3 	if country == "BE" & year == 2011 & pl_eli == 1
 
 
 * BENEFIT (monthly)
 /*	-> full-time workers: €684.94/month 
+	-> Flanders: additional €160/month until child is 1 year old (LP&R 2011)
 */
 
 replace pl_ben1 = 684.94 		if country == "BE" & year == 2011 & pl_eli == 1 ///
