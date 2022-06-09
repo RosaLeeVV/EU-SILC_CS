@@ -44,10 +44,11 @@ replace ml_dur2 = 8-1 	if country == "BE" & year == 2011 & gender == 1 ///
 
 
 * BENEFIT (monthly)
-/* 	-> employed (MISSOC 01/07/2011): 
+/* 	-> employed (MISSOC 07/2011): 
 		-> first 30 days = 82% earnings, no ceiling 
-		-> rest of leave = 75% earnings, ceiling €91.19/day.			
-	-> unemployed (M2011): 
+		-> rest of leave = 75% earnings, ceiling €91.19/day (ceiling from LP&R 2011)
+	-> self-employed (MISSOC 07/2011):
+	-> unemployed (M2011): €383.24/week
 		-> first month = unemployment benefit + 19% of previous earnings with a ceiling €133.0/day
 		-> rest = unemployment benefit + 15% with a ceiling €133.0/day
 		-> not coded (EU-SILC unemployment benefit - household level data)
@@ -71,6 +72,9 @@ replace ml_ben1 = (((((0.82*earning) / 4.3) * (30/5)) + (((91.19 * 5) * (15 - (3
 						& ceiling > 91.19*21.7
 				
 
+* self-employed
+replace ml_ben1 = 383.24 * 4.3 		if country == "BE" & year == 2011 & gender == 1 ///
+					& econ_status == 1 & ml_ben1 == . & ml_eli == 1 
 
 * ML benefit in the first month
 replace ml_ben2 = 0.82 * earning ///
