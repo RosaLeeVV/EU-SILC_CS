@@ -18,12 +18,14 @@ replace pt_dur = 10/5 	if country == "BE" & year == 2011 & gender == 2 ///
 
 
 * BENEFIT (monthly)
-/*	-> 82% of earnings
-		*/
+/*	-> 100% earning for 3 days
+	-> 82% of earnings for remaining 7 days
+	-> to be used within 4 months from birth
+*/
 	
 
 
-replace pt_ben1 = ((earning*0.82) * (10/21.7))	+ (earning * ((21.7-10)/21.7)) ///
+replace pt_ben1 = (earning * (3/21.7)) +(earning*0.82) * (7/21.7)) + (earning * ((21.7-10)/21.7)) ///
 									if country == "BE" & year == 2011 ///
 									& gender == 2  & pt_eli == 1					
 									
