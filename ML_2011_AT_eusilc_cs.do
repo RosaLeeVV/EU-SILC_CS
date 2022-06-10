@@ -3,7 +3,7 @@
 * AUSTRIA - 2011
 
 * ELIGIBILITY
-/* -> Employed: earnings at least €374.02/month  
+/* -> Employed  
    -> Self-employed: if voluntarily insured => not coded.
    -> Unemployed: if receive unemployment benefits/completed 3 months of 
 	continuous  employment		
@@ -12,7 +12,7 @@
 */
    
 replace ml_eli = 1 		if country == "AT" & year == 2011 & gender == 1 ///
-						& econ_status == 1 & earning >= 374.02
+						& econ_status == 1 
 replace ml_eli = 1 		if country == "AT" & year == 2011 & gender == 1 ///
 						& econ_status == 3 & duremp >= 3
 				
