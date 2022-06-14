@@ -31,14 +31,14 @@ replace ml_dur2 = (140-30)/7 		if country == "EE" & year == 2012 & gender == 1 &
 * employed	
 replace ml_ben1 = earning 		if country == "EE" & year == 2012 & ml_eli == 1 ///
 								& duremp >= 1 
-replace ml_ben1 = 390			if country == "EE" & year == 2012 & ml_eli == 1 ///
+replace ml_ben1 = 290			if country == "EE" & year == 2012 & ml_eli == 1 ///
 								& duremp == 0
 
 								
 * self-employed								
 replace ml_ben1 = earning 		if country == "EE" & year == 2012 & ml_eli == 1 ///
 								& dursemp >= 1 
-replace ml_ben1 = 390			if country == "EE" & year == 2012 & ml_eli == 1 ///
+replace ml_ben1 = 290			if country == "EE" & year == 2012 & ml_eli == 1 ///
 								& dursemp == 0
 
 
